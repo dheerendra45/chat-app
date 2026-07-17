@@ -13,7 +13,7 @@ import { app,server } from './socket/socket.js';
 import connectmongodb from './db/connectmongodb.js';
 
 const corsOptions = {
-  origin: 'http://localhost:3000',  // Replace with the actual origin of your frontend
+  origin: process.env.FRONTEND_URL || 'http://localhost:3000',  // Use environment variable for production
   credentials: true,  // Allow cookies and authorization headers
 };
 
