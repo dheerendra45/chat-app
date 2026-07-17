@@ -1,6 +1,6 @@
 import "./App.css";
 import React from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
 import Home from "./pages/home/Home";
 import Signup from "./pages/signup/Signup";
@@ -13,9 +13,9 @@ function App() {
     <>
       <div className="p-4 h-screen flex items-center justify-center">
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/signup" element={<Signup />} />
-          <Route path="/login" element={<Login />} />
+          <Route path="/" element={authUser ? <Home /> : <Navigate to="/login" />} />
+          <Route path="/signup" element={authUser ? <Navigate to="/" /> : <Signup />} />
+          <Route path="/login" element={authUser ? <Navigate to="/" /> : <Login />} />
           {/* Add more routes as needed */}
         </Routes>
       </div>
