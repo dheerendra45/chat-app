@@ -13,7 +13,8 @@ const usesendmessages = () => {
             const token = localStorage.getItem("chat-token");
             console.log("id send in msg ",selectedConversation._id)
 
-            const res = await fetch(`http://localhost:8080/api/messages/send/${selectedConversation._id}`, {
+            const apiUrl = import.meta.env.VITE_API_URL || "http://localhost:8080";
+            const res = await fetch(`${apiUrl}/api/messages/send/${selectedConversation._id}`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

@@ -13,7 +13,8 @@ const useGetMessages = () => {
                 const token = localStorage.getItem("chat-token");
                 console.log("tokens send in get msg ", token);
 
-                const res = await fetch(`http://localhost:8080/api/messages/get/${selectedConversation._id}`, {
+                const apiUrl = import.meta.env.VITE_API_URL || "http://localhost:8080";
+                const res = await fetch(`${apiUrl}/api/messages/get/${selectedConversation._id}`, {
                     method: "GET",
                     headers: {
                         "Content-Type": "application/json",

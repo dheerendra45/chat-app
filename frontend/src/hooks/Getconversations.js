@@ -16,7 +16,8 @@ const GetConversations = () => {
           throw new Error("Unauthorized - No Token Provided");
         }
 
-        const res = await fetch("http://localhost:8080/api/users", {
+        const apiUrl = import.meta.env.VITE_API_URL || "http://localhost:8080";
+        const res = await fetch(`${apiUrl}/api/users`, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
