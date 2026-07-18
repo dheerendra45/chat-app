@@ -19,7 +19,18 @@ const Message = ({ message }) => {
 
   return (
     <div className={`chat ${chatClassName}`}>
-      <div className="chat-image avatar"></div>
+      <div className="chat-image avatar">
+        <div className="w-10 rounded-full">
+          <img
+            src={profilepic || `https://api.dicebear.com/7.x/initials/svg?seed=${fromMe ? authUser.username : selectedConversation.fullname}`}
+            alt="avatar"
+            onError={(e) => {
+              e.target.onerror = null;
+              e.target.src = `https://api.dicebear.com/7.x/initials/svg?seed=${fromMe ? authUser.username : selectedConversation.fullname}`;
+            }}
+          />
+        </div>
+      </div>
       <div
         className={`chat-bubble text-white bg-blue-500 ${bubbleBgColor} ${shakeClass} pb-2`}
       >
