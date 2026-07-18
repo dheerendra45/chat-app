@@ -70,7 +70,7 @@ export const getmessage = async (req, res) => {
     }).populate("messages");
 
     if (!conversation) {
-      return res.status(404).json({ error: "Conversation not found" });
+      return res.status(200).json([]);  // No conversation yet, return empty array (not an error)
     }
 
     res.status(200).json(conversation.messages);
